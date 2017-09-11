@@ -65,4 +65,4 @@ ffmpeg -i out/intro-audio.mov -i out/cnj-audio.mov -i out/MOVIE.mov -i out/outro
 
 mv out/RESULT.mov .
 rm -rf out
-rm -rf in 
+rm -rf in
