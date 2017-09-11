@@ -62,5 +62,7 @@ ffmpeg -i out/intro-audio.mov -i out/cnj-audio.mov -i out/MOVIE.mov -i out/outro
  -filter_complex "[0:v:0] [0:a:0] [1:v:0] [1:a:0] [2:v:0] [2:a:0] [3:v:0] [3:a:0]  concat=n=4:v=1:a=1 [v] [a]" \
  -map "[v]" -map "[a]"  out/RESULT.mov
 
+
 mv out/RESULT.mov .
-rm -rf out 
+rm -rf out
+rm -rf in 
