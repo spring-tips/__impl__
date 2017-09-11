@@ -9,6 +9,10 @@ out=$(
 );
 
 
+function detect_audio(){
+  ffprobe -i $1 -show_streams -select_streams a -loglevel error
+}
+
 function add_audio_track(){
   ffmpeg -ar 44100 -acodec pcm_s16le -f s16le -ac 2 -channel_layout 2.1 \
        -i /dev/zero -i $1 -vcodec copy -acodec  aac -shortest $2
@@ -45,11 +49,19 @@ add_audio_track in/intro.mov out/intro-audio.mov
 add_audio_track in/outro.mov out/outro-audio.mov
 add_audio_track in/cnj.mov out/cnj-audio.mov
 
+# convert in/test.ogv test
+ffmpeg -i in/test.ogv  -vf "scale=1920:1080,setsar=1"  out/test.mov
+# cp in/test.ogv out/test.ogv
+
+ffmpeg -i out/intro-audio.mov -i out/cnj-audio.mov -i out/test.mov -i out/outro-audio.mov  \
+ -filter_complex "[0:v:0] [0:a:0] [1:v:0] [1:a:0] [2:v:0] [2:a:0] [3:v:0] [3:a:0]  concat=n=4:v=1:a=1 [v] [a]" \
+ -map "[v]" -map "[a]"  out/RESULT.mov
+
 # then convert everything to the same size and shape of a file
-convert out/intro-audio.mov intro
-convert out/cnj-audio.mov cnj
-convert in/test.ogv test  #### TODO: REPLACE THIS WITH THE FILE YOU WANT TO BUILD A VIDEO FOR
-convert out/outro-audio.mov outro
+# convert out/intro-audio.mov intro
+# convert out/cnj-audio.mov cnj
+# convert in/test.ogv test  #### TODO: REPLACE THIS WITH THE FILE YOU WANT TO BUILD A VIDEO FOR
+# convert out/outro-audio.mov outro
 
 # then concatenate everything
-ffmpeg -f concat  -safe 0 -i $out/files.txt $out/final.mov
+# ffmpeg -f concat  -safe 0 -i $out/files.txt $out/final.mov
