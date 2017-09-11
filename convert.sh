@@ -1,20 +1,27 @@
 #!/bin/bash
 
 
-if [ -z "$INPUT_ASSETS"]
-then
-  echo "you must provide an \$INPUT_ASSETS environment variable pointing to a directory in which we can find:"
+function usage(){
+  echo "SPRING TIPS PRODUCER"
+  echo
+  echo "1.) you must provide an \$INPUT_ASSETS environment variable pointing to a directory containing:"
   echo " intro.mov"
   echo " outro.mov"
   echo " cnj.mov"
+
+  echo "2.) use: convert.sh my-screen-recording.ogv"
+  echo "(no input recording given.)"
+}
+
+if [ -z "$INPUT_ASSETS" ]
+then
+  usage
   exit 1
 fi
 
 if [ -z "$1" ]
 then
-  echo "Spring Tips Producer"
-  echo "use: convert.sh my-screen-recording.ogv"
-  echo "(no input recording given.)"
+  usage
   exit 1
 else
   echo "creating Spring Tip video for file '$1'."
