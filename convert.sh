@@ -1,5 +1,38 @@
 #!/bin/bash
 
+
+if [ -z "$INPUT_ASSETS"]
+then
+  echo "you must provide an \$INPUT_ASSETS environment variable pointing to a directory in which we can find:"
+  echo " intro.mov"
+  echo " outro.mov"
+  echo " cnj.mov"
+  exit 1
+fi
+
+if [ -z "$1" ]
+then
+  echo "Spring Tips Producer"
+  echo "use: convert.sh my-screen-recording.ogv"
+  echo "(no input recording given.)"
+  exit 1
+else
+  echo "creating Spring Tip video for file '$1'."
+fi
+
+movie=$1
+
+in=$(
+  echo $INPUT_ASSETS
+  mkdir -p in
+  cd in
+  cp $INPUT_ASSETS/intro.mov .
+  cp $INPUT_ASSETS/outro.mov .
+  cp $INPUT_ASSETS/cnj.mov .
+  pwd
+  cd ..
+)
+
 out=$(
   rm -rf out
   mkdir -p out
@@ -18,50 +51,16 @@ function add_audio_track(){
        -i /dev/zero -i $1 -vcodec copy -acodec  aac -shortest $2
 }
 
-function convert() {
-  echo $out
-  in=$1
-  o=$2.mp4
-  rm -rf $o
-
-  # https://support.google.com/youtube/answer/1722171?hl=en
-  # -r = video frame rate  (recommended for YT SDR is 25)
-  # -b:a = audio frame rate (recommended for YT SDR is 128)
-  # -acodec audio codec (recommended for YT is AAC-LC)
-  # -vcodec video codec (recommended for YT is H264)
-  # -f force a format (recommended for YT is MP4)
-  # -vf set the filter graph
-
-  # ffmpeg -i $in -acodec mp3 -b:a 128k -vf "scale=1920:1080,setsar=1" -vcodec mpeg4 \
-  #     -r 60 -b:v 1200k -flags +aic+mv4 -f mp4 out/$o
-
-  ffmpeg -i $in -acodec mp3  -vf "scale=1920:1080,setsar=1" -vcodec mpeg4 \
-       -flags +aic+mv4 -f mp4 out/$o
-
-
-  echo "file '$out/$o'"  >>  $out/files.txt
-}
-
-rm files.txt
-
 # the 3 bumpers don't have a sound track, so add them here
 add_audio_track in/intro.mov out/intro-audio.mov
 add_audio_track in/outro.mov out/outro-audio.mov
 add_audio_track in/cnj.mov out/cnj-audio.mov
 
-# convert in/test.ogv test
-ffmpeg -i in/test.ogv  -vf "scale=1920:1080,setsar=1"  out/test.mov
-# cp in/test.ogv out/test.ogv
+ffmpeg -i $movie   -vf "scale=1920:1080,setsar=1"  out/MOVIE.mov
 
-ffmpeg -i out/intro-audio.mov -i out/cnj-audio.mov -i out/test.mov -i out/outro-audio.mov  \
+ffmpeg -i out/intro-audio.mov -i out/cnj-audio.mov -i out/MOVIE.mov -i out/outro-audio.mov  \
  -filter_complex "[0:v:0] [0:a:0] [1:v:0] [1:a:0] [2:v:0] [2:a:0] [3:v:0] [3:a:0]  concat=n=4:v=1:a=1 [v] [a]" \
  -map "[v]" -map "[a]"  out/RESULT.mov
 
-# then convert everything to the same size and shape of a file
-# convert out/intro-audio.mov intro
-# convert out/cnj-audio.mov cnj
-# convert in/test.ogv test  #### TODO: REPLACE THIS WITH THE FILE YOU WANT TO BUILD A VIDEO FOR
-# convert out/outro-audio.mov outro
-
-# then concatenate everything
-# ffmpeg -f concat  -safe 0 -i $out/files.txt $out/final.mov
+mv out/RESULT.mov .
+rm -rf out 
