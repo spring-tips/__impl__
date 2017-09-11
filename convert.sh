@@ -4,7 +4,7 @@
 function usage(){
   echo "SPRING TIPS PRODUCER"
   echo
-  echo "1.) you must provide an \$INPUT_ASSETS environment variable pointing to a directory containing:"
+  echo "1.) you must provide an \$SPRING_TIPS_INPUT_ASSETS environment variable pointing to a directory containing:"
   echo " intro.mov"
   echo " outro.mov"
   echo " cnj.mov"
@@ -13,7 +13,7 @@ function usage(){
   echo "(no input recording given.)"
 }
 
-if [ -z "$INPUT_ASSETS" ]
+if [ -z "$SPRING_TIPS_INPUT_ASSETS" ]
 then
   usage
   exit 1
@@ -30,12 +30,12 @@ fi
 movie=$1
 
 in=$(
-  echo $INPUT_ASSETS
+  echo "using assets from: $SPRING_TIPS_INPUT_ASSETS." 
   mkdir -p in
   cd in
-  cp $INPUT_ASSETS/intro.mov .
-  cp $INPUT_ASSETS/outro.mov .
-  cp $INPUT_ASSETS/cnj.mov .
+  cp $SPRING_TIPS_INPUT_ASSETS/intro.mov .
+  cp $SPRING_TIPS_INPUT_ASSETS/outro.mov .
+  cp $SPRING_TIPS_INPUT_ASSETS/cnj.mov .
   pwd
   cd ..
 )
