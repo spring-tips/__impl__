@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 
-st=ENV["ST_HOME"]
+st=ENV["ST_CODE"]
 expand_dir = st
 repository_file = File.join(File.join(expand_dir, '_impl_/github'), 'repos.txt')
 
