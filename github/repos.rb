@@ -2,14 +2,9 @@
 
 
 st=ENV["ST_HOME"]
-
 expand_dir = st
 repository_file = File.join(File.join(expand_dir, '_impl_/github'), 'repos.txt')
 
-puts expand_dir
-puts repository_file
-
-exit (1)
 
 File.new(repository_file)
     .readlines
