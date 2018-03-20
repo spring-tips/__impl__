@@ -2,8 +2,12 @@
 
 
 st=ENV["ST_CODE"]
+if ! st
+  puts "no environment variable $ST_CODE defined! exiting."
+  exit(1)
+end
 expand_dir = st
-repository_file = File.join(File.join(expand_dir, '_impl_/github'), 'repos.txt')
+repository_file = File.join(File.join(File.join(expand_dir, '_impl_'),'/github'), 'repos.txt')
 
 
 File.new(repository_file)
