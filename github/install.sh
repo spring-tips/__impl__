@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bootstrap=_impl_
-st_dir=${ST_CODE:-${HOME}/spring-tips-code-test} # set $ST_CODE to control where this is
+st_dir=${ST_CODE:-${HOME}/spring-tips-code-test}
 export ST_CODE=$st_dir
 mkdir -p $st_dir
 full_bootstrap=$st_dir/$bootstrap
