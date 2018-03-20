@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 if $PROGRAM_NAME == __FILE__
+
+  puts ENV["ST_HOME"]
+
+  exit
   expand_dir = File.expand_path('../../..', $PROGRAM_NAME)
   repository_file = File.join(File.expand_path('..', $PROGRAM_NAME), 'repos.txt')
   File.new(repository_file)
