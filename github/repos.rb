@@ -2,6 +2,8 @@
 
 if $PROGRAM_NAME == __FILE__
 
+  puts "from ruby"
+  
   puts ENV["ST_HOME"]
 
   exit
