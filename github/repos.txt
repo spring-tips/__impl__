@@ -39,3 +39,6 @@ jooq
 spring-batch
 spring-cloud-contract-http
 spring-security-5-oauth-client
+spring-cloud-stream-kafka-streams
+project-riff-and-spring-cloud-function
+apache-camel
