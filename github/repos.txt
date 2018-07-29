@@ -1,3 +1,4 @@
+bootiful-gcp
 micrometer
 bootiful-data
 reactive-integration
