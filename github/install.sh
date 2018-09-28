@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bootstrap=_impl_
-st_dir=${ST_CODE:-${HOME}/spring-tips-code-test}
+st_dir=${ST_CODE:-${HOME}/spring-tips-code}
 mkdir -p $st_dir
 full_bootstrap=$st_dir/$bootstrap
 echo $full_bootstrap
