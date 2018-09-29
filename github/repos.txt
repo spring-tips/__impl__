@@ -1,4 +1,4 @@
-bootiful-gcp
+spring-cloud-gcp
 micrometer
 bootiful-data
 reactive-integration
