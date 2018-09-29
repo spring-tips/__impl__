@@ -35,7 +35,7 @@ in=$(
   cd in
   cp $SPRING_TIPS_INPUT_ASSETS/intro.mov .
   cp $SPRING_TIPS_INPUT_ASSETS/outro.mov .
-  cp $SPRING_TIPS_INPUT_ASSETS/cnj.mov .
+  cp $SPRING_TIPS_INPUT_ASSETS/cover.png .
   pwd
   cd ..
 )
@@ -59,8 +59,8 @@ function add_audio_track(){
 }
 
 ## build the cover image
-rm out/cover-15s.mov
-ffmpeg -loop 1 -i cover.png -c:v libx264 -t 15 -pix_fmt yuv420p -vf scale=1920:1080,setsar=1:1 out/cover-15s.mov
+rm -rf out/cover-15s.mov
+ffmpeg -loop 1 -i in/cover.png -c:v libx264 -t 15 -pix_fmt yuv420p -vf scale=1920:1080,setsar=1:1 out/cover-15s.mov
 
 ## add the audio track to the cover image
 rm out/cover-15s-audio.mov
@@ -68,7 +68,6 @@ add_audio_track  out/cover-15s.mov out/cover-15s-audio.mov
 
 ## make sure the rest of the clips have audio tracks 
 add_audio_track in/outro.mov out/outro-audio.mov
-add_audio_track in/cnj.mov out/cnj-audio.mov
 add_audio_track in/intro.mov out/intro-audio.mov
 
 #ffmpeg -i $movie -c:v libtheora -q:v 7 -c:a libvorbis -q:a 4 out/STAGE.ogv
