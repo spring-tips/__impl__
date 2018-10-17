@@ -1,3 +1,5 @@
+apache-geode
+hedging
 spring-cloud-gcp
 micrometer
 bootiful-data
