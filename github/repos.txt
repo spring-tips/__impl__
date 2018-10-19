@@ -1,3 +1,4 @@
+javafx
 apache-geode
 hedging
 spring-cloud-gcp
