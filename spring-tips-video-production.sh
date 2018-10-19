@@ -70,14 +70,10 @@ add_audio_track  out/cover-15s.mov out/cover-15s-audio.mov
 add_audio_track in/outro.mov out/outro-audio.mov
 add_audio_track in/intro.mov out/intro-audio.mov
 
-#ffmpeg -i $movie -c:v libtheora -q:v 7 -c:a libvorbis -q:a 4 out/STAGE.ogv
-ffmpeg -i $movie -c:v libtheora -q:v 7 -c:a libvorbis -q:a 4 out/STAGE.ogv
-
-ffmpeg -i out/STAGE.ogv   -vf "scale=1920:1080,setsar=1"  out/MOVIE.mov
+ffmpeg -i $movie -vf "scale=1920:1080,setsar=1" out/MOVIE.mov
 
 ffmpeg -i out/cover-15s-audio.mov  -i out/intro-audio.mov -i out/MOVIE.mov -i out/outro-audio.mov \
  -filter_complex "[0:v:0][0:a:0][1:v:0][1:a:0][2:v:0][2:a:0][3:v:0][3:a:0] concat=n=4:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" out/RESULT.mov
-
 
 mv out/RESULT.mov .
 rm -rf out
