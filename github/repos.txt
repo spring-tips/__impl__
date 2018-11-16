@@ -4,7 +4,7 @@ reactive-sql-access-with-r2dbc-and-spring-data-jdbc
 javafx
 apache-geode
 hedging
-spring-cloud-gcp
+bootiful-gcp
 micrometer
 bootiful-data
 reactive-integration
