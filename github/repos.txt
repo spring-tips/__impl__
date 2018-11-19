@@ -1,10 +1,11 @@
 bootiful-alibaba
+bootiful-gcp
+bootiful-azure
 bootiful-reactive-tdd
 reactive-sql-access-with-r2dbc-and-spring-data-jdbc
 javafx
 apache-geode
 hedging
-bootiful-gcp
 micrometer
 bootiful-data
 reactive-integration
