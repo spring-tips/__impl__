@@ -1,3 +1,4 @@
+bean-basics
 bootiful-alibaba
 bootiful-gcp
 bootiful-azure
