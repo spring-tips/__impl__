@@ -1,11 +1,12 @@
 reactor-context
 flowable-processes
 bean-basics
+rsocket
 bootiful-alibaba
 bootiful-gcp
 bootiful-azure
 bootiful-reactive-tdd
-reactive-sql-access-with-r2dbc-and-spring-data-jdbc
+reactive-sql-access-with-r2dbc-and-spring-data-r2dbc
 javafx
 apache-geode
 hedging
