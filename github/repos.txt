@@ -56,3 +56,7 @@ project-riff-and-spring-cloud-function
 apache-camel
 jdbc
 jpa
+webmvc-fn
+reactive-mysql-with-jasync-and-r2dbc
+lazy-and-fast
+spring-fu-jafu
