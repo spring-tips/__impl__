@@ -2,6 +2,7 @@ reactor-context
 flowable-processes
 bean-basics
 rsocket
+rsocket-spring-messaging
 bootiful-alibaba
 bootiful-gcp
 bootiful-azure
