@@ -1,5 +1,6 @@
 reactor-context
 flowable-processes
+spring-cloud-circuit-breaker
 bean-basics
 rsocket
 rsocket-spring-messaging
