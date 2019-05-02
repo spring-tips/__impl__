@@ -27,6 +27,7 @@ reactive-security
 scala
 jaxrs
 functional-reactive-endpoints-in-spring-5-update-1
+redis
 elasticsearch
 bootiful-kotlin
 spring-5-programmatic-bean-definitions
