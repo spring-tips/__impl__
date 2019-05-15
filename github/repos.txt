@@ -1,3 +1,5 @@
+kafka-and-spring-batch
+reactive-views
 reactor-context
 flowable-processes
 spring-cloud-circuit-breaker
