@@ -1,3 +1,6 @@
+organizational-consistency
+debugging-reactor-applications
+reactive-transactions
 kafka-and-spring-batch
 reactive-views
 reactor-context
