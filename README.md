@@ -1,9 +1,3 @@
-# Implementation Code for producing Spring Tips videos themselves
+# Supporting Infrastructure Code for Spring Tips Video Production
 
-This project supports the creation of the videos themselves. 
-
-If you want to bulk-clone all the repositories, use the following incantation:
-
-export ST_CODE=$HOME/Desktop/spring-tips-code # you can use whatever environment variables you'd like 
-
-curl https://raw.githubusercontent.com/spring-tips/_impl_/master/github/install.sh | /bin/bash 
+This project supports the creation of the videos themselves. If you want to bulk-clone all the repositories, check out the instructions in [`__init__`](https://github.com/spring-tips/__init__).
